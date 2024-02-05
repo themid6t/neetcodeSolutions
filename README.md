@@ -1,2 +1,2 @@
 # neetcodeSolutions
-Solution for leetcode problems listed in neetcode.io roadmap
+## Solution for leetcode problems listed in [neetcode roadmap](neetcode.io/roadmap)
