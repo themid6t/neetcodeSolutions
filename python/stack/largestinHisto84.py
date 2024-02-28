@@ -1,20 +1,18 @@
 def largestRectangleArea(heights: list[int]) -> int:
-    pass
+    maxArea = 0
+    stack = [] # (index, height)
+    for i, h in enumerate(heights):
+        start = i
+        while stack and stack[-1][1] > h:
+            index, height = stack.pop()
+            maxArea = max(maxArea, (i - index) * height)
+            start = index
+        stack.append((start, h))
+    
+    for i, h in stack:
+        maxArea = max(maxArea, (len(heights) - i) * h)
 
-from matplotlib import pyplot as plt
-def plot_histogram(heights):
-    # Plot the histogram
-    plt.bar(range(len(heights)), heights, width=1, edgecolor='black')
-    
-    # Add labels and title
-    plt.xlabel('Height')
-    plt.ylabel('Frequency')
-    plt.title('Height Histogram')
-    
-    # Display the plot
-    plt.grid(True)
-    plt.show()
+    return maxArea
 
 heights = [2,1,5,6,2,3]
-plot_histogram(heights)
 print(largestRectangleArea(heights))
